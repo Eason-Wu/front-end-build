@@ -20,4 +20,16 @@ Front-End-Build
 	获取原始模板：git clone https://github.com/gruntjs/grunt-init-gruntfile.git
 	
 	grunt-init --help 可以显示使用方法
+4. grunt-contrib-concat 文件拼接组件
+	用法参见下列 
+	https://www.npmjs.com/package/grunt-contrib-concat
+5. grunt-contrib-htmlmin 压缩html文件
+	用法参见下列链接
+	https://www.npmjs.com/package/grunt-contrib-htmlmin
+6. grunt-contrib-uglify 压缩CSS文件以及合并文件
+	用法参见链接
+	https://www.npmjs.com/package/grunt-contrib-uglify
+	https://github.com/gruntjs/grunt-contrib-uglify
+
+
 
