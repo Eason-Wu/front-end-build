@@ -30,15 +30,26 @@ Front-End-Build
 1. grunt-contrib-concat 文件拼接组件
 	用法参见下链接
 	https://www.npmjs.com/package/grunt-contrib-concat
+
 2. grunt-contrib-htmlmin 压缩html文件
 	用法参见链接
 	https://www.npmjs.com/package/grunt-contrib-htmlmin
+
 3. grunt-contrib-uglify 压缩js文件以及合并文件
 	用法参见链接
 	https://www.npmjs.com/package/grunt-contrib-uglify
 	https://github.com/gruntjs/grunt-contrib-uglify
+
 4. grunt-contrib-cssmin  压缩CSS文件以及合并文件
 	https://www.npmjs.com/package/grunt-contrib-cssmin
+
+5. grunt-contrib-imagemin 压缩图片
+	https://www.npmjs.com/package/grunt-contrib-imagemin
+
+	需要 NODEJS v0.10.0+ NPM v1.4.0+ 
+	升级 NPM Mac ： sudo curl -L https://npmjs.org/install.sh | sh
+		如果出错请先卸载 NPM： sudo npm uninstall npm -g
+		再安装NPM
 
 Tips:  grunt XX -v 保证options运行，并打出所有log
 
