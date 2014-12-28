@@ -26,16 +26,19 @@ Front-End-Build
 或者直接将package.json 以及 Gruntfile.js 复制到项目根目录，使用以下命令安装
 	npm install 
 
-4. grunt-contrib-concat 文件拼接组件
+
+1. grunt-contrib-concat 文件拼接组件
 	用法参见下链接
 	https://www.npmjs.com/package/grunt-contrib-concat
-5. grunt-contrib-htmlmin 压缩html文件
+2. grunt-contrib-htmlmin 压缩html文件
 	用法参见链接
 	https://www.npmjs.com/package/grunt-contrib-htmlmin
-6. grunt-contrib-uglify 压缩CSS文件以及合并文件
+3. grunt-contrib-uglify 压缩js文件以及合并文件
 	用法参见链接
 	https://www.npmjs.com/package/grunt-contrib-uglify
 	https://github.com/gruntjs/grunt-contrib-uglify
+4. grunt-contrib-cssmin  压缩CSS文件以及合并文件
+	https://www.npmjs.com/package/grunt-contrib-cssmin
 
-
+Tips:  grunt XX -v 保证options运行，并打出所有log
 

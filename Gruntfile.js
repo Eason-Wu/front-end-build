@@ -1,6 +1,5 @@
 /*global module:false*/
 module.exports = function(grunt) {
-
   // Project configuration.
   grunt.initConfig({
     // Metadata.
@@ -61,26 +60,32 @@ module.exports = function(grunt) {
       }
     },
     cssmin: {
-      justListAllFiles: {
-        files: {
-          'output.css': ['foo.css', 'bar.css']
-        }
+      options :{
+        report : 'min'
       },
       build: {
+        options: {
+          report: 'min'
+        },
         files: [{
           expand: true,
           cwd: 'src/css',
           src: ['*.css', '!*.min.css'],
           dest: 'dist/src/css'
         }]
+      },
+      combine: {
+        files: {
+          'dist/src/css/combine.css': ['src/css/bootstrap.css','src/css/dashboard.css']
+        }
       }
     },
-    htmlmin: {                                     
+    htmlmin: { 
+      options:{
+        removeComments: true,
+        collapseWhitespace: true,
+      },                                    
       build: {                                      
-        options: {                                 
-          removeComments: true,
-          collapseWhitespace: true
-        },
         files: {                                   
           'dist/index.html': 'src/index.html',
           'dist/index.html': 'src/index.html'
@@ -89,19 +94,42 @@ module.exports = function(grunt) {
       release: {
         options: {                                 
           removeComments: true,
-          collapseWhitespace: true
+          removeCommentsFromCDATA: true,
+          collapseWhitespace: true,
+          collapseBooleanAttributes: true,
+          removeAttributeQuotes: true,
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+          removeEmptyAttributes: true,
+          removeOptionalTags: true
         },
         files: [{ 
           expand: true,
-          src: 'src/**/*.html',
+          cwd:'src',
+          src: '**/*.html',
           dest: 'dist/'
         }]
       }
     },
+    imagemin: {
+       build: {
+         options: {
+           optimizationLevel: 7,
+           pngquant: true
+         },
+         files: [{
+            expand: true, 
+            cwd: 'src', 
+            src: ['images/*.{png,jpg,jpeg,gif,webp,svg}'], 
+            dest: 'dist/src/'
+          }]
+       }
+     },
     clean: {
       buildJS: ["dist/**/*.js","!dist/**/*.min.js"],
       buildCSS: ["dist/**/*.css","!dist/**/*.min.css"],
       buildHtml: ["dist/**/*.html"],
+      buildImage: ['dist/**/*.{png,jpg,jpeg,gif,webp,svg}'],
       build: ["dist/"]
     },
     watch: {
@@ -126,9 +154,9 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-htmlmin');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-imagemin');
 
-  // Default task.
-  //grunt.registerTask('default', ['jshint', 'qunit', 'concat', 'uglify']);
+  // Default task
   // build mini html
   grunt.registerTask('minhtml', ['clean:buildHtml','htmlmin:release']);
 
@@ -141,6 +169,10 @@ module.exports = function(grunt) {
   grunt.registerTask('clean-html',['clean:buildHtml']);
 
   grunt.registerTask('clean-js',['clean:build']);
+  // 合并CSS文件 建议使用concat 插件
+  grunt.registerTask('csscombine',['cssmin:combine']);
 
-  grunt.registerTask('default',['clean:build','htmlmin:release','uglify:build','cssmin:build']);
+  grunt.registerTask('minimage',['clean:buildImage','imagemin:build'])
+
+  grunt.registerTask('default',['clean:build','htmlmin:release','uglify:build','cssmin:build','imagemin:build']);
 };
