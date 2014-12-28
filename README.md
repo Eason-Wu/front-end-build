@@ -20,11 +20,17 @@ Front-End-Build
 	获取原始模板：git clone https://github.com/gruntjs/grunt-init-gruntfile.git
 	
 	grunt-init --help 可以显示使用方法
+
+以下的组件 安装请在项目的根目录使用以下命令
+	npm install xx --save-dev
+或者直接将package.json 以及 Gruntfile.js 复制到项目根目录，使用以下命令安装
+	npm install 
+
 4. grunt-contrib-concat 文件拼接组件
-	用法参见下列 
+	用法参见下链接
 	https://www.npmjs.com/package/grunt-contrib-concat
 5. grunt-contrib-htmlmin 压缩html文件
-	用法参见下列链接
+	用法参见链接
 	https://www.npmjs.com/package/grunt-contrib-htmlmin
 6. grunt-contrib-uglify 压缩CSS文件以及合并文件
 	用法参见链接
